@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM centos/nginx-18-centos7:latest
 
 ENV HTPASSWD='foo:$apr1$odHl5EJN$KbxMfo86Qdve2FH4owePn.' \
     FORWARD_PORT=80 \
@@ -6,7 +6,7 @@ ENV HTPASSWD='foo:$apr1$odHl5EJN$KbxMfo86Qdve2FH4owePn.' \
 
 WORKDIR /opt
 
-RUN apk add --no-cache gettext
+RUN yum install gettext
 
 COPY auth.conf auth.htpasswd launch.sh ./
 
